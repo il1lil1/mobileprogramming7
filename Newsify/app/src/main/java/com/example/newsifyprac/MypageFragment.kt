@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.newsifyprac.databinding.FragmentMypageBinding
 import com.example.newsifyprac.databinding.FragmentSettingBinding
 
 class MypageFragment : Fragment() {
 
-    var binding: FragmentSettingBinding?=null
+    var binding: FragmentMypageBinding?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,14 +24,14 @@ class MypageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var mypageTextView : TextView = view.findViewById(R.id.mypagetext)
-        mypageTextView.setOnClickListener {
-            val fragment = requireActivity().supportFragmentManager.beginTransaction()
-            fragment.addToBackStack(null)
-            val reporterFragment = ReporterFragment()
-            fragment.replace(R.id.frameLayout, reporterFragment)
-            fragment.commit()
-        }
+//        var mypageTextView : TextView = view.findViewById(R.id.mypagetext)
+//        mypageTextView.setOnClickListener {
+//            val fragment = requireActivity().supportFragmentManager.beginTransaction()
+//            fragment.addToBackStack(null)
+//            val reporterFragment = ReporterFragment()
+//            fragment.replace(R.id.frameLayout, reporterFragment)
+//            fragment.commit()
+//        }
     }
 
     override fun onDestroyView() {
