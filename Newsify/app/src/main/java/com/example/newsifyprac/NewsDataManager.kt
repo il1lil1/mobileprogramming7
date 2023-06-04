@@ -32,12 +32,12 @@ class NewsDataManager {
 
     val sbsRSS = arrayListOf<String>(
         "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER", //정치
-        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=02&plink=RSSREADER", // 경제
-        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=03&plink=RSSREADER", // 사회
-        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=07&plink=RSSREADER", // 생활/문화
-        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=08&plink=RSSREADER", // 국제/글로벌
-        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=14&plink=RSSREADER", // 연예/방송
-        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=09&plink=RSSREADER" // 스포츠
+        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=02&plink=RSSREADER", //경제
+        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=03&plink=RSSREADER", //사회
+        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=07&plink=RSSREADER", //생활/문화
+        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=08&plink=RSSREADER", //국제/글로벌
+        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=14&plink=RSSREADER", //연예/방송
+        "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=09&plink=RSSREADER" //스포츠
     )
 
     val sbsCategory = hashMapOf(
@@ -84,7 +84,6 @@ class NewsDataManager {
         for (data in newsList) {
             Log.i("DEBUG.LOG", data.title)
             Log.i("DEBUG.LOG", data.url)
-            Log.i("DEBUG.LOG", data.content)
             Log.i("DEBUG.LOG", data.date)
             Log.i("DEBUG.LOG", data.category)
             Log.i("DEBUG.LOG", data.broadcaster)
@@ -108,7 +107,7 @@ class NewsDataManager {
 
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter, news.select("pubDate").text(),
-                        news.select("description").text(), sbsCategory[rssurlSbs].toString(), "SBS"))
+                        sbsCategory[rssurlSbs].toString(), "SBS"))
                     i++
                     if (i > NewsReadCount) {
                         i = 0
@@ -136,7 +135,7 @@ class NewsDataManager {
 
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter.attr("content").toString() + " 기자", news.select("pubDate").text(),
-                        news.select("description").text(), jtbcCategory[rssurlJtbc].toString(), "JTBC"))
+                        jtbcCategory[rssurlJtbc].toString(), "JTBC"))
                     i++
                     if (i > NewsReadCount) {
                         i = 0
@@ -162,7 +161,7 @@ class NewsDataManager {
 
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter, news.select("pubDate").text(),
-                        news.select("content\\:encoded").text(), chosunCategory[rssurlChosun].toString(), "조선일보"))
+                        chosunCategory[rssurlChosun].toString(), "조선일보"))
                     i++
                     if (i > NewsReadCount) {
                         i = 0
@@ -171,7 +170,7 @@ class NewsDataManager {
 
                 }
             }
-            DebugAllData()
+            //DebugAllData()
         }
     }
 

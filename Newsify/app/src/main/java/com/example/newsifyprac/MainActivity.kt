@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.newsifyprac.databinding.ActivityMainBinding
+
 val newsDataManager = NewsDataManager()
 
 class MainActivity : AppCompatActivity() {
