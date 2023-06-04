@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initLayout(){
         newsDataManager.initNewsData()
-        
+
         myViewModel.setLiveData(0)
         val fragment = supportFragmentManager.beginTransaction()
         val newsFragment = NewsFragment()

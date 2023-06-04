@@ -50,16 +50,49 @@ class NewsDataManager {
         "https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=09&plink=RSSREADER" to "sports"
     )
 
+    val chosunRss = arrayListOf<String>(
+    	"https://www.chosun.com/arc/outboundfeeds/rss/category/politics/?outputType=xml", //정치
+    	"https://www.chosun.com/arc/outboundfeeds/rss/category/economy/?outputType=xml", // 경제
+    	"https://www.chosun.com/arc/outboundfeeds/rss/category/national/?outputType=xml", // 사회
+    	"https://www.chosun.com/arc/outboundfeeds/rss/category/international/?outputType=xml", // 국제
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/culture-life/?outputType=xml", // 문화/라이프
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/sports/?outputType=xml", // 스포츠
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/entertainments/?outputType=xml", // 연예
+    )
+
+    val chosunCategory = hashMapOf(
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/politics/?outputType=xml"  to "politics",
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/economy/?outputType=xml" to "economy",
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/national/?outputType=xml" to "society",
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/international/?outputType=xml" to "international",
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/culture-life/?outputType=xml" to "culture",
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/sports/?outputType=xml" to "sports",
+        "https://www.chosun.com/arc/outboundfeeds/rss/category/entertainments/?outputType=xml" to "entertainment"
+    )
+
     val scope = CoroutineScope(Dispatchers.IO)
 
     val NewsReadCount = 2
 
     fun initNewsData() {
         getNewsJtbc()
-        getNewsMbc()
+        getNewsSbs()
+        getNewsChosun()
     }
 
-    fun getNewsMbc() {
+    fun DebugAllData() {
+        for (data in newsList) {
+            Log.i("DEBUG.LOG", data.title)
+            Log.i("DEBUG.LOG", data.url)
+            Log.i("DEBUG.LOG", data.content)
+            Log.i("DEBUG.LOG", data.date)
+            Log.i("DEBUG.LOG", data.category)
+            Log.i("DEBUG.LOG", data.broadcaster)
+            Log.i("DEBUG.LOG", data.reporter)
+        }
+    }
+
+    fun getNewsSbs() {
         scope.launch {
             var i = 0
             for (rssurlSbs in sbsRSS) {
@@ -73,8 +106,6 @@ class NewsDataManager {
                         reporter = "SBS 편집부"
                     }
 
-                    Log.i("NEWS_MBC", reporter)
-
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter, news.select("pubDate").text(),
                         news.select("description").text(), sbsCategory[rssurlSbs].toString(), "SBS"))
@@ -87,6 +118,7 @@ class NewsDataManager {
                 }
 
             }
+            //DebugAllData()
         }
     }
 
@@ -112,8 +144,34 @@ class NewsDataManager {
                     }
 
                 }
-
             }
+            //DebugAllData()
+        }
+    }
+
+    fun getNewsChosun() {
+        scope.launch {
+            var i = 0
+            for (rssurlChosun in chosunRss) {
+                val docRss = Jsoup.connect(rssurlChosun).parser(Parser.xmlParser()).get()
+                val headline  = docRss.select("item")
+
+                for (news in headline) {
+                    val urlToselect = news.select("link").text()
+                    val reporter = news.select("dc\\:creator").text()
+
+                    newsList.add(NewsData(news.select("title").text(), urlToselect,
+                        reporter, news.select("pubDate").text(),
+                        news.select("content\\:encoded").text(), chosunCategory[rssurlChosun].toString(), "조선일보"))
+                    i++
+                    if (i > NewsReadCount) {
+                        i = 0
+                        break
+                    }
+
+                }
+            }
+            DebugAllData()
         }
     }
 
