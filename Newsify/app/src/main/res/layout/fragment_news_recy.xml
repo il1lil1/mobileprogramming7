@@ -3,6 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:background="@drawable/news_stroke"
     android:id="@+id/newslayout">
     <LinearLayout
         android:layout_width="0dp"

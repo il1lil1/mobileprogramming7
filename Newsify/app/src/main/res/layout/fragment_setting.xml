@@ -9,55 +9,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".SettingFragment"
-        android:orientation="vertical"
-        android:background="@drawable/textview_style">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/setting"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
+            android:layout_height="match_parent"
             android:text="설정"
-            android:textSize="25dp"
-            android:gravity="center"/>
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/textview_style"/>
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TableRow
-                android:background="@drawable/textview_style">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="글자 크기"
                     android:textSize="25dp"
                     android:gravity="center"
                     android:layout_weight="3"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="25dp"
                     android:textSize="25dp"
                     android:gravity="center"
+                    android:background="@drawable/textview_style2"
                     android:layout_weight="1"/>
             </TableRow>
             <TableRow
-                android:background="@drawable/textview_style">
+                android:background="@drawable/textview_style2">
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="기사 형식"
                     android:textSize="25dp"
                     android:gravity="center"
                     android:layout_weight="3"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="~~~"
                     android:textSize="25dp"
                     android:gravity="center"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
         </TableLayout>
 
@@ -65,77 +67,81 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="15dp"
             android:text="알림 설정"
-            android:textSize="25dp"
-            android:gravity="center"/>
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/textview_style"/>
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TableRow
-                android:background="@drawable/textview_style">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="알림 받기"
                     android:textSize="25dp"
                     android:gravity="center"
                     android:layout_weight="3"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="25dp"
                     android:textSize="25dp"
                     android:gravity="center"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
-            <TableRow
-                android:background="@drawable/textview_style">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="진동"
                     android:textSize="25dp"
                     android:gravity="center"
                     android:layout_weight="3"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="~~~"
                     android:textSize="25dp"
                     android:gravity="center"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
-            <TableRow
-                android:background="@drawable/textview_style">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="알림음"
                     android:textSize="25dp"
                     android:gravity="center"
                     android:layout_weight="3"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="~~~"
                     android:textSize="25dp"
                     android:gravity="center"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
         </TableLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="15dp"
             android:text="카테고리"
-            android:textSize="25dp"
-            android:gravity="center"/>
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="@drawable/textview_style"/>
 
         <TableLayout
             android:id="@+id/tableLayout"
@@ -154,7 +160,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="sample"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check2"
@@ -163,7 +169,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="정치"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check3"
@@ -172,7 +178,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="경제"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
 
             <TableRow
@@ -187,7 +193,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="사회"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check5"
@@ -196,7 +202,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="국제"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check6"
@@ -205,7 +211,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="문화"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
 
             <TableRow
@@ -220,7 +226,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="연예"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check8"
@@ -229,7 +235,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="스포츠"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check9"
@@ -238,7 +244,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="SBS"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
 
             <TableRow
@@ -254,7 +260,7 @@
                     android:paddingRight="30dp"
                     android:checked="true"
                     android:text="JTBC"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check11"
@@ -264,7 +270,7 @@
                     android:paddingRight="30dp"
                     android:checked="true"
                     android:text="조선일보"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
 
                 <CheckBox
                     android:id="@+id/check12"
@@ -273,7 +279,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="sample"
-                    android:background="@drawable/textview_style"/>
+                    android:background="@drawable/textview_style2"/>
             </TableRow>
         </TableLayout>
 

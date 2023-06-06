@@ -37,9 +37,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingBottom="5dp"
                 android:gravity="center"
                 android:text="뉴스"
-                android:textSize="20dp" />
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
 
@@ -60,8 +62,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="마이페이지"
-                android:textSize="20dp"
-                android:gravity="center"/>
+                android:paddingBottom="5dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
         <LinearLayout
@@ -81,8 +85,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="설정"
-                android:textSize="20dp"
-                android:gravity="center"/>
+                android:paddingBottom="5dp"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
 

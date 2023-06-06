@@ -50,8 +50,6 @@ class MypageFragment : Fragment() {
             }
         }
 
-        val dividerItemDecoration = DividerItemDecoration(scrap_recycler.context, LinearLayoutManager(requireContext()).orientation)
-        scrap_recycler.addItemDecoration(dividerItemDecoration)
         scrap_recycler.layoutManager = LinearLayoutManager(requireContext())
         scrap_recycler.adapter = adapter
 

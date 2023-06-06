@@ -29,15 +29,6 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var searchtextView : TextView = view.findViewById(R.id.search)
-        searchtextView.setOnClickListener {
-            val fragment = requireActivity().supportFragmentManager.beginTransaction()
-            fragment.addToBackStack(null)
-            val reporterFragment = ReporterFragment()
-            fragment.replace(R.id.frameLayout, reporterFragment)
-            fragment.commit()
-        }
-
 
         var myrecyView : RecyclerView = view.findViewById(R.id.recyclerView)
 
@@ -58,8 +49,7 @@ class NewsFragment : Fragment() {
                 fragment.commit()
             }
         }
-        val dividerItemDecoration = DividerItemDecoration(myrecyView.context, LinearLayoutManager(requireContext()).orientation)
-        myrecyView.addItemDecoration(dividerItemDecoration)
+
         myrecyView.layoutManager = LinearLayoutManager(requireContext())
         myrecyView.adapter = adapter
 

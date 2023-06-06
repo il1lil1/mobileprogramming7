@@ -55,8 +55,7 @@ class ReporterFragment : Fragment() {
             }
         }
 
-        val dividerItemDecoration = DividerItemDecoration(myrecyView.context, LinearLayoutManager(requireContext()).orientation)
-        myrecyView.addItemDecoration(dividerItemDecoration)
+
         myrecyView.layoutManager = LinearLayoutManager(requireContext())
         myrecyView.adapter = adapter
     }

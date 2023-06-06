@@ -4,15 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ReporterFragment"
-    android:orientation="vertical"
-    android:background="@drawable/textview_style">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingVertical="20dp"
-        android:background="@drawable/textview_style">
+        android:paddingVertical="20dp">
         <ImageView
             android:layout_width="70dp"
             android:layout_height="match_parent"
@@ -41,14 +39,14 @@
         android:layout_height="wrap_content"
         android:paddingVertical="10dp"
         android:text="작성 기사"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
         android:background="@drawable/textview_style"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/textview_style"/>
-
+        android:layout_height="wrap_content"/>
 </LinearLayout>
