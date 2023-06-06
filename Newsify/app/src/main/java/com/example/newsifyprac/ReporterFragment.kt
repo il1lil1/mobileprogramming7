@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsifyprac.databinding.FragmentReporterBinding
@@ -53,6 +54,9 @@ class ReporterFragment : Fragment() {
                 adapter.notifyItemChanged(positon)
             }
         }
+
+        val dividerItemDecoration = DividerItemDecoration(myrecyView.context, LinearLayoutManager(requireContext()).orientation)
+        myrecyView.addItemDecoration(dividerItemDecoration)
         myrecyView.layoutManager = LinearLayoutManager(requireContext())
         myrecyView.adapter = adapter
     }

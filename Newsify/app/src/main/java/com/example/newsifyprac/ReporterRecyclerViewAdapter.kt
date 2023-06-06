@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.newsifyprac.databinding.FragmentNewsRecyBinding
 
-import com.example.newsifyprac.databinding.FragmentReporterRecyBinding
 
 class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
     : RecyclerView.Adapter<ReporterRecyclerViewAdapter.ViewHolder>() {
@@ -17,7 +17,7 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
 
     var itemClickListener:OnItemClickListener?=null
 
-    inner class ViewHolder(var binding: FragmentReporterRecyBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: FragmentNewsRecyBinding) : RecyclerView.ViewHolder(binding.root) {
         init{
             binding.newsSave.setOnClickListener {
                 itemClickListener?.OnItemClick(values[adapterPosition],adapterPosition)
@@ -33,7 +33,7 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentReporterRecyBinding.inflate(
+            FragmentNewsRecyBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
