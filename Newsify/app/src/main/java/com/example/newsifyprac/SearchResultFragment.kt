@@ -44,10 +44,10 @@ class SearchResultFragment : Fragment() {
         var SearchRecyclerView : RecyclerView = binding!!.searchRecycler
         adapter = SearchResultAdapter(SearchedList)
 
-        adapter.itemClickListener = object :NewsRecyclerViewAdapter.OnItemClickListener,
-            SearchResultAdapter.OnItemClickListener {
+        adapter.itemClickListener = object :SearchResultAdapter.OnItemClickListener
+            {
             override fun OnItemClick(data: NewsData, positon:Int) {
-                data_real[positon].scraped = !data_real[positon].scraped
+                SearchedList[positon].scraped = !SearchedList[positon].scraped
                 adapter.notifyItemChanged(positon)
             }
 
