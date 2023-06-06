@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -31,6 +32,15 @@ class NewsFragment : Fragment() {
 
 
         var myrecyView : RecyclerView = view.findViewById(R.id.recyclerView)
+
+        var searchbtn : ImageView = view.findViewById(R.id.search_button)
+        searchbtn.setOnClickListener {
+            val fragment = requireActivity().supportFragmentManager.beginTransaction()
+            fragment.addToBackStack(null)
+            val searchFragment = SearchFragment()
+            fragment.replace(R.id.frameLayout, searchFragment)
+            fragment.commit()
+        }
 
         adapter = NewsRecyclerViewAdapter(data_real)
         adapter.itemClickListener = object :NewsRecyclerViewAdapter.OnItemClickListener{

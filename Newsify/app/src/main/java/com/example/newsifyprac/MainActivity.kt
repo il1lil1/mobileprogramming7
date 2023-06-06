@@ -51,5 +51,12 @@ class MainActivity : AppCompatActivity() {
             fragment.replace(R.id.frameLayout, settingFragment)
             fragment.commit()
         }
+        binding.home.setOnClickListener {
+            val fragment = supportFragmentManager.beginTransaction()
+            fragment.addToBackStack(null)
+            val newsFragment = NewsFragment()
+            fragment.replace(R.id.frameLayout, newsFragment)
+            fragment.commit()
+        }
     }
 }
