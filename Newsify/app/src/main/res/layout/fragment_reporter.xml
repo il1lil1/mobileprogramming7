@@ -20,6 +20,7 @@
             android:src="@drawable/favorite_after"
             android:layout_gravity="center"/>
         <TextView
+            android:id="@+id/reporter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -27,6 +28,7 @@
             android:textSize="25dp"
             android:gravity="center"/>
         <TextView
+            android:id="@+id/where"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

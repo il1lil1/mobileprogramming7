@@ -3,9 +3,11 @@ package com.example.newsifyprac
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.newsifyprac.databinding.ActivityMainBinding
 
 val newsDataManager = NewsDataManager()
+var data_real = arrayListOf<NewsData>()
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initLayout(){
         newsDataManager.initNewsData()
+        data_real = newsDataManager.getNews()
 
         myViewModel.setLiveData(0)
         val fragment = supportFragmentManager.beginTransaction()

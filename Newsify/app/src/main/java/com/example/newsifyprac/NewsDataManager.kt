@@ -188,6 +188,23 @@ class NewsDataManager {
         }
         return newsByCategoryList;
     }
+    fun getNewsByCategoryDifferentWay(category:String, flag:Boolean): ArrayList<NewsData> {
+
+        if(flag) {
+            for (news in newsList) {
+                if (category == news.category) {
+                    news.categorySelect = true
+                }
+            }
+        } else {
+            for (news in newsList) {
+                if (category == news.category) {
+                    news.categorySelect = false
+                }
+            }
+        }
+        return newsList;
+    }
 
     fun getNewsByReporter(reporter:String): ArrayList<NewsData> {
         var newsByReporterList = arrayListOf<NewsData>()
@@ -199,6 +216,20 @@ class NewsDataManager {
         }
         return newsByReporterList;
     }
+    fun getNewsByReporterDifferentWay(reporter:String): ArrayList<NewsData>{
+
+        //초기화
+        for (news in newsList){
+            news.reporterSelect = false
+        }
+        //새로운 리포터
+        for (news in newsList) {
+            if (reporter == news.reporter) {
+                news.reporterSelect = true
+            }
+        }
+        return newsList
+    }
 
     fun getNewsByBroadcaster(broadcaster:String): ArrayList<NewsData> {
         var newsByBroadcasterList = arrayListOf<NewsData>()
@@ -209,5 +240,22 @@ class NewsDataManager {
             }
         }
         return newsByBroadcasterList;
+    }
+    fun getNewsByBroadcasterDifferentWay(broadcaster:String, flag:Boolean): ArrayList<NewsData> {
+
+        if(flag) {
+            for (news in newsList) {
+                if (broadcaster == news.broadcaster) {
+                    news.broadcasterSelect = true
+                }
+            }
+        } else {
+            for (news in newsList) {
+                if (broadcaster == news.broadcaster) {
+                    news.broadcasterSelect = false
+                }
+            }
+        }
+        return newsList;
     }
 }

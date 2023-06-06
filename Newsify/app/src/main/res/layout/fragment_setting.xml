@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="전체"
+                android:text="sample"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="경제"
+                android:text="정치"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="사회"
+                android:text="경제"
                 android:background="@drawable/textview_style"/>
         </TableRow>
 
@@ -181,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="생활/문화"
+                android:text="사회"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -190,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="IT/과학"
+                android:text="국제"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="세계"
+                android:text="문화"
                 android:background="@drawable/textview_style"/>
         </TableRow>
 
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="스포츠"
+                android:text="연예"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="정치"
+                android:text="스포츠"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -232,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="경향신문"
+                android:text="SBS"
                 android:background="@drawable/textview_style"/>
         </TableRow>
 
@@ -248,7 +248,7 @@
                 android:layout_weight="1"
                 android:paddingRight="30dp"
                 android:checked="true"
-                android:text="한국일보"
+                android:text="JTBC"
                 android:background="@drawable/textview_style"/>
 
             <CheckBox
@@ -267,7 +267,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="한겨레21"
+                android:text="sample"
                 android:background="@drawable/textview_style"/>
         </TableRow>
     </TableLayout>

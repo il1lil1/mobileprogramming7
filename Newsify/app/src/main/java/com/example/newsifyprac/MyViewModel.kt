@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 
 class MyViewModel: ViewModel(){
     val selectedNum = MutableLiveData<Int>()
+
+    var checkboxStates: MutableList<Boolean> = MutableList(11) { true }
+
     fun setLiveData(num:Int){
         selectedNum.value = num
     }

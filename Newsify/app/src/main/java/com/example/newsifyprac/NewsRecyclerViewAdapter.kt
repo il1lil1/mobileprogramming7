@@ -5,22 +5,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.newsifyprac.databinding.FragmentNewsBinding
+import com.example.newsifyprac.databinding.FragmentNewsRecyBinding
 
 import com.example.newsifyprac.databinding.FragmentReporterRecyBinding
 
-class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
-    : RecyclerView.Adapter<ReporterRecyclerViewAdapter.ViewHolder>() {
+class NewsRecyclerViewAdapter(private val values: ArrayList<NewsData>)
+    : RecyclerView.Adapter<NewsRecyclerViewAdapter.ViewHolder>() {
 
     interface OnItemClickListener{
         fun OnItemClick(data: NewsData,position: Int)
+        fun OnReporterClick(data: NewsData, position: Int)
     }
 
     var itemClickListener:OnItemClickListener?=null
 
-    inner class ViewHolder(var binding: FragmentReporterRecyBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: FragmentNewsRecyBinding) : RecyclerView.ViewHolder(binding.root) {
         init{
             binding.newsSave.setOnClickListener {
                 itemClickListener?.OnItemClick(values[adapterPosition],adapterPosition)
+            }
+            binding.newsReporter.setOnClickListener {
+                itemClickListener?.OnReporterClick(values[adapterPosition],adapterPosition)
             }
         }
         val contentView: TextView = binding.newsTittle
@@ -33,7 +39,7 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentReporterRecyBinding.inflate(
+            FragmentNewsRecyBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -56,33 +62,33 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
             holder.binding.newsSave.setImageResource(R.drawable.before_save)
         }
 
-//        if(values[position].broadcasterSelect){
-//            holder.binding.newslayout.visibility = View.VISIBLE
-//        }else{
-//            holder.binding.newslayout.visibility = View.GONE
-//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
-//            layoutParams.height = 0
-//            holder.binding.newslayout.layoutParams = layoutParams
-//        }
-//
-//        if(values[position].categorySelect){
-//            holder.binding.newslayout.visibility = View.VISIBLE
-//        }else{
-//            holder.binding.newslayout.visibility = View.GONE
-//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
-//            layoutParams.height = 0
-//            holder.binding.newslayout.layoutParams = layoutParams
-//        }
-
-        if(values[position].reporterSelect) {
+        if(values[position].broadcasterSelect){
             holder.binding.newslayout.visibility = View.VISIBLE
-        }
-        else{
+        }else{
             holder.binding.newslayout.visibility = View.GONE
             val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
             layoutParams.height = 0
             holder.binding.newslayout.layoutParams = layoutParams
         }
+
+        if(values[position].categorySelect){
+            holder.binding.newslayout.visibility = View.VISIBLE
+        }else{
+            holder.binding.newslayout.visibility = View.GONE
+            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
+            layoutParams.height = 0
+            holder.binding.newslayout.layoutParams = layoutParams
+        }
+
+//        if(values[position].reporterSelect) {
+//            holder.binding.newslayout.visibility = View.VISIBLE
+//        }
+//        else{
+//            holder.binding.newslayout.visibility = View.GONE
+//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
+//            layoutParams.height = 0
+//            holder.binding.newslayout.layoutParams = layoutParams
+//        }
 
     }
 
