@@ -21,14 +21,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:gravity="end">
+        android:gravity="end"
+        android:background="@drawable/search_border"
+        android:layout_margin="5dp">
         <ImageView
             android:id="@+id/search_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_gravity="right"
-
-            android:src="@drawable/searchicon" />
+            android:layout_gravity="right"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

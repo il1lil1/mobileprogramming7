@@ -48,85 +48,13 @@
         android:layout_height="match_parent"
         android:layout_weight="20" />
 
-    <LinearLayout
-        android:id="@+id/news"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/textview_style"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/news" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingBottom="5dp"
-                android:gravity="center"
-                android:text="뉴스"
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/mypage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:background="@drawable/textview_style">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/mypage"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="마이페이지"
-                android:paddingBottom="5dp"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="#FFFFFF"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/setting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:background="@drawable/textview_style">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/setting"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="설정"
-                android:paddingBottom="5dp"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="#FFFFFF"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+        android:background="@drawable/textview_style"
+        app:menu="@menu/bottom_navigation_menu"
+        app:itemIconTint="@color/bottom_navigation_colors"
+        app:itemTextColor="@color/bottom_navigation_colors"/>
 
   </LinearLayout>

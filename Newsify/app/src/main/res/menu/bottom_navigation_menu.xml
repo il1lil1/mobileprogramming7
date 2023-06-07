@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_news"
+        android:icon="@drawable/news"
+        android:title="뉴스" />
+
+    <item
+        android:id="@+id/navigation_mypage"
+        android:icon="@drawable/mypage"
+        android:title="마이페이지" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/setting"
+        android:title="설정" />
+</menu>
