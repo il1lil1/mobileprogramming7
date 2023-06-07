@@ -11,4 +11,9 @@ class MyViewModel: ViewModel(){
     fun setLiveData(num:Int){
         selectedNum.value = num
     }
+
+    val searchterm = MutableLiveData<String>()
+    fun setLiveData(term:String){
+        searchterm.value = term
+    }
 }
