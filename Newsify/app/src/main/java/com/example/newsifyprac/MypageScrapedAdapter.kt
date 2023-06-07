@@ -1,8 +1,12 @@
 package com.example.newsifyprac
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsifyprac.databinding.FragmentNewsRecyBinding
 
@@ -18,7 +22,7 @@ class MypageScrapedAdapter(private val values: ArrayList<NewsData>)
 
     var itemClickListener:OnItemClickListener?=null
 
-    inner class ViewHolder(var binding: FragmentNewsRecyBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: FragmentNewsRecyBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener  {
         init{
             binding.newsSave.setOnClickListener {
                 itemClickListener?.OnItemClick(values[adapterPosition],adapterPosition)
@@ -28,9 +32,27 @@ class MypageScrapedAdapter(private val values: ArrayList<NewsData>)
             binding.newsReporter.setOnClickListener {
                 itemClickListener?.OnReporterClick(values[adapterPosition],adapterPosition)
             }
+            binding.newsMemo.setOnClickListener(this)
         }
         val contentView: TextView = binding.newsTittle
 
+        override fun onClick(v: View?) {
+            v?.context?.let { showMemoDialog(it, adapterPosition) }
+        }
+
+        private fun showMemoDialog(context: Context, position: Int) {
+            val dialogView = LayoutInflater.from(context).inflate(R.layout.scrap_memo, null)
+            val editText = dialogView.findViewById<EditText>(R.id.dialogMemo)
+            editText.setText(values[position].memo)
+
+            AlertDialog.Builder(context)
+                .setView(dialogView)
+                .setPositiveButton("저장") { _, _ ->
+                    values[position].memo = editText.text.toString()
+                }
+                .setNegativeButton("취소", null)
+                .show()
+        }
         override fun toString(): String {
             return super.toString() + " '" + contentView.text + "'"
         }
@@ -57,24 +79,9 @@ class MypageScrapedAdapter(private val values: ArrayList<NewsData>)
             holder.binding.newsSave.setImageResource(R.drawable.after_save)
         } else {
             holder.binding.newsSave.setImageResource(R.drawable.before_save)
+            values[position].memo = ""
         }
 
-//        if(values[position].broadcasterSelect){
-//            holder.binding.newslayout.visibility = View.VISIBLE
-//        }else{
-//            holder.binding.newslayout.visibility = View.GONE
-//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
-//            layoutParams.height = 0
-//            holder.binding.newslayout.layoutParams = layoutParams
-//        }
-//
-//        if(values[position].categorySelect){
-//            holder.binding.newslayout.visibility = View.VISIBLE
-//        }else{
-//            holder.binding.newslayout.visibility = View.GONE
-//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
-//            layoutParams.height = 0
-//            holder.binding.newslayout.layoutParams = layoutParams
-//        }
+
     }
 }
