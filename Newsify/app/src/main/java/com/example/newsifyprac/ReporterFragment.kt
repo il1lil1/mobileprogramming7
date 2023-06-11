@@ -17,6 +17,7 @@ class ReporterFragment : Fragment() {
     var binding: FragmentReporterBinding?=null
     lateinit var adapter:ReporterRecyclerViewAdapter
 
+    var favorited: Boolean? = null
     var reporterName: String? = null
     var broadcasterName: String? = null
 
@@ -40,12 +41,23 @@ class ReporterFragment : Fragment() {
 
 
         var myrecyView : RecyclerView = view.findViewById(R.id.recyclerView)
+        var Favorited : ImageView = view.findViewById(R.id.favorite)
         var Reporter : TextView = view.findViewById(R.id.reporter)
         var where : TextView = view.findViewById(R.id.where)
 
+        if(favorited == true){
+            Favorited.setImageResource(R.drawable.favorite_after)
+        }
+        else{
+            Favorited.setImageResource(R.drawable.favorite_before)
+        }
         Reporter.text = reporterName
         where.text = broadcasterName
 
+        Favorited.setOnClickListener {
+            data_real = newsDataManager.getFavorited(reporterName!!)
+//            adapter.notifyDataSetChanged()
+        }
 
         adapter = ReporterRecyclerViewAdapter(data_real)
         adapter.itemClickListener = object :ReporterRecyclerViewAdapter.OnItemClickListener{

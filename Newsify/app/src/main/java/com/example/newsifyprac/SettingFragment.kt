@@ -28,14 +28,14 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var myTextView : TextView = view.findViewById(R.id.setting)
-        myTextView.setOnClickListener {
-            val fragment = requireActivity().supportFragmentManager.beginTransaction()
-            fragment.addToBackStack(null)
-            val reporterFragment = ReporterFragment()
-            fragment.replace(R.id.frameLayout, reporterFragment)
-            fragment.commit()
-        }
+//        var myTextView : TextView = view.findViewById(R.id.setting)
+//        myTextView.setOnClickListener {
+//            val fragment = requireActivity().supportFragmentManager.beginTransaction()
+//            fragment.addToBackStack(null)
+//            val reporterFragment = ReporterFragment()
+//            fragment.replace(R.id.frameLayout, reporterFragment)
+//            fragment.commit()
+//        }
 
         val mainActivity = requireActivity() as MainActivity
         myViewModel = mainActivity.myViewModel

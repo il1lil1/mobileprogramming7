@@ -12,10 +12,11 @@
         android:orientation="horizontal"
         android:paddingVertical="20dp">
         <ImageView
+            android:id="@+id/favorite"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/favorite_after"
+            android:src="@drawable/favorite_before"
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/reporter"
