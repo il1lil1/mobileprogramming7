@@ -13,6 +13,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        newsDataManager.initNewsData()
 
         val animFadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         val rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate)

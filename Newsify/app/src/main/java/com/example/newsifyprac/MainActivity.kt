@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun initLayout(){
-        newsDataManager.initNewsData()
         data_real = newsDataManager.getNews()
 
         myViewModel.setLiveData(0)
