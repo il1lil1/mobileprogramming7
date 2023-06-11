@@ -30,14 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         myViewModel.setLiveData(0)
 
-        binding.home.setOnClickListener {
-            val fragment = supportFragmentManager.beginTransaction()
-            fragment.addToBackStack(null)
-            val newsFragment = NewsFragment()
-            fragment.replace(R.id.frameLayout, newsFragment)
-            fragment.commit()
-        }
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -56,6 +48,16 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        binding.home.setOnClickListener {
+            val fragment = supportFragmentManager.beginTransaction()
+            fragment.addToBackStack(null)
+            val newsFragment = NewsFragment()
+            fragment.replace(R.id.frameLayout, newsFragment)
+            fragment.commit()
+            bottomNavigationView.selectedItemId = R.id.navigation_news
+        }
+
         // To display initially selected fragment
         loadFragment(NewsFragment())
     }
