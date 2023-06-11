@@ -70,6 +70,21 @@ class NewsDataManager {
         "https://www.chosun.com/arc/outboundfeeds/rss/category/entertainments/?outputType=xml" to "entertainment"
     )
 
+    val dateMap = hashMapOf(
+        "Jan" to "01",
+        "Feb" to "02",
+        "Mar" to "03",
+        "Apr" to "04",
+        "May" to "05",
+        "Jun" to "06",
+        "Jul" to "07",
+        "Aug" to "08",
+        "Sep" to "09",
+        "Oct" to "10",
+        "Nov" to "11",
+        "Dec" to "12"
+    )
+
     val scope = CoroutineScope(Dispatchers.IO)
 
     val NewsReadCount = 2
@@ -105,8 +120,12 @@ class NewsDataManager {
                         reporter = "SBS 편집부"
                     }
 
+                    var dateSplit = news.select("pubDate").text().split(" ")
+                    var date = dateSplit[3] + "." + dateMap[dateSplit[2]] + "." + dateSplit[1]
+                    Log.i("DATE-SBS", date)
+
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
-                        reporter, news.select("pubDate").text(),
+                        reporter, date,
                         sbsCategory[rssurlSbs].toString(), "SBS"))
                     i++
                     if (i > NewsReadCount) {
@@ -132,6 +151,8 @@ class NewsDataManager {
                     val urlToselect = news.select("link").text()
                     val docUrl = Jsoup.connect(urlToselect).get()
                     val reporter = docUrl.select("#Head1>[name=Author]")
+
+                    Log.i("DATE-Jtbc", news.select("pubDate").text())
 
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter.attr("content").toString() + " 기자", news.select("pubDate").text(),
@@ -159,8 +180,13 @@ class NewsDataManager {
                     val urlToselect = news.select("link").text()
                     val reporter = news.select("dc\\:creator").text()
 
+                    var dateSplit = news.select("pubDate").text().split(" ")
+                    var date = dateSplit[3] + "." + dateMap[dateSplit[2]] + "." + dateSplit[1]
+
+                    Log.i("DATE-Chosun", date)
+
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
-                        reporter, news.select("pubDate").text(),
+                        reporter, date,
                         chosunCategory[rssurlChosun].toString(), "조선일보"))
                     i++
                     if (i > NewsReadCount) {
