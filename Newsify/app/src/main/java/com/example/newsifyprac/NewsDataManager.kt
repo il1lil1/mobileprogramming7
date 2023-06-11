@@ -284,4 +284,14 @@ class NewsDataManager {
         }
         return newsList;
     }
+
+    fun getFavorited(reporter: String): ArrayList<NewsData> {
+        for (news in newsList){
+            if(reporter == news.reporter){
+                news.favorited = !news.favorited
+            }
+        }
+
+        return newsList
+    }
 }

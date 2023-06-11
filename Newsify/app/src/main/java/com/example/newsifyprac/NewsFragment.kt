@@ -53,6 +53,7 @@ class NewsFragment : Fragment() {
                 val fragment = requireActivity().supportFragmentManager.beginTransaction()
                 fragment.addToBackStack(null)
                 val reporterFragment = ReporterFragment()
+                reporterFragment.favorited = data.favorited
                 reporterFragment.reporterName = data.reporter
                 reporterFragment.broadcasterName = data.broadcaster
                 fragment.replace(R.id.frameLayout, reporterFragment)
