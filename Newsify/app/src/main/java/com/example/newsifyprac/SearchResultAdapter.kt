@@ -50,7 +50,7 @@ class SearchResultAdapter(private val items: ArrayList<NewsData>): RecyclerView.
                 holder.binding.newsTittle.text = items[position].title
                 holder.binding.newsCompany.text = items[position].broadcaster
                 holder.binding.newsReporter.text = items[position].reporter
-
+                holder.binding.newsTime.text = items[position].date
                 holder.binding.newslayout.visibility = View.VISIBLE
 
         if (items[position].scraped == true) {

@@ -54,6 +54,7 @@ class NewsRecyclerViewAdapter(private val values: ArrayList<NewsData>)
         holder.binding.newsTittle.text = values[position].title
         holder.binding.newsCompany.text = values[position].broadcaster
         holder.binding.newsReporter.text = values[position].reporter
+        holder.binding.newsTime.text = values[position].date
         if (values[position].scraped == true) {
             holder.binding.newsSave.setImageResource(R.drawable.after_save)
             holder.binding.newsMemo.visibility = View.INVISIBLE
