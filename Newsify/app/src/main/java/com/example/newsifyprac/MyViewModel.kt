@@ -8,6 +8,8 @@ class MyViewModel: ViewModel(){
 
     var checkboxStates: MutableList<Boolean> = MutableList(11) { true }
 
+    var TextSize :Int = 10
+
     fun setLiveData(num:Int){
         selectedNum.value = num
     }

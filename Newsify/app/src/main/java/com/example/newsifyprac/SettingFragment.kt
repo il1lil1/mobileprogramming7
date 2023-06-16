@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.CheckBox
+import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +20,8 @@ class SettingFragment : Fragment() {
     private lateinit var myViewModel: MyViewModel
 
     var binding: FragmentSettingBinding?=null
+
+    var spindata:ArrayList<String> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,17 +34,35 @@ class SettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        var myTextView : TextView = view.findViewById(R.id.setting)
-//        myTextView.setOnClickListener {
-//            val fragment = requireActivity().supportFragmentManager.beginTransaction()
-//            fragment.addToBackStack(null)
-//            val reporterFragment = ReporterFragment()
-//            fragment.replace(R.id.frameLayout, reporterFragment)
-//            fragment.commit()
-//        }
-
         val mainActivity = requireActivity() as MainActivity
         myViewModel = mainActivity.myViewModel
+
+
+        val spinadapter = ArrayAdapter<String>(requireContext(),
+            android.R.layout.simple_spinner_dropdown_item,spindata)
+
+        var myspinview : Spinner = view.findViewById(R.id.spinner)
+        myspinview.adapter = spinadapter
+
+        spinadapter.add("10")
+        spinadapter.add("12")
+        spinadapter.add("14")
+
+        myspinview.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                Toast.makeText(parent?.context, parent?.getItemAtPosition(position).toString(),
+                    Toast.LENGTH_SHORT).show()
+
+                var what = spinadapter.getItem(position).toString().toInt()
+                myViewModel.TextSize = what
+
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+        val selectedIndex = spinadapter.getPosition(myViewModel.TextSize.toString())
+        myspinview.setSelection(selectedIndex)
+
 
         var check2 : CheckBox = view.findViewById(R.id.check2)
         var check3 : CheckBox  = view.findViewById(R.id.check3)

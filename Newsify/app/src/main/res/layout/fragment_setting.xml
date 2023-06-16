@@ -33,13 +33,19 @@
                     android:gravity="center"
                     android:layout_weight="3"
                     android:background="@drawable/textview_style2"/>
-                <TextView
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:text="25dp"-->
+<!--                    android:textSize="25dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:background="@drawable/textview_style2"-->
+<!--                    android:layout_weight="1"/>-->
+
+                <Spinner
+                    android:id="@+id/spinner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="25dp"
-                    android:textSize="25dp"
-                    android:gravity="center"
-                    android:background="@drawable/textview_style2"
                     android:layout_weight="1"/>
             </TableRow>
             <TableRow
