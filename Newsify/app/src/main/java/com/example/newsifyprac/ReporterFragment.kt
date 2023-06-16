@@ -55,8 +55,14 @@ class ReporterFragment : Fragment() {
         where.text = broadcasterName
 
         Favorited.setOnClickListener {
+            favorited = !favorited!!
             data_real = newsDataManager.getFavorited(reporterName!!)
-//            adapter.notifyDataSetChanged()
+            if(favorited == true) {
+                Favorited.setImageResource(R.drawable.favorite_after)
+            }
+            else {
+                Favorited.setImageResource(R.drawable.favorite_before)
+            }
         }
 
         adapter = ReporterRecyclerViewAdapter(data_real)
