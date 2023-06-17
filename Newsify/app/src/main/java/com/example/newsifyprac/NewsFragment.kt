@@ -51,7 +51,6 @@ class NewsFragment : Fragment() {
 
             override fun OnReporterClick(data: NewsData, position: Int) {
                 val fragment = requireActivity().supportFragmentManager.beginTransaction()
-                fragment.addToBackStack(null)
                 val reporterFragment = ReporterFragment()
                 reporterFragment.favorited = data.favorited
                 reporterFragment.reporterName = data.reporter

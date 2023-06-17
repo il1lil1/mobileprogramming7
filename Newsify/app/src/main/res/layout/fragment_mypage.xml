@@ -13,11 +13,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
             android:text="스크랩 기사"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:gravity="center"
             android:background="@drawable/textview_style"/>
 
@@ -31,7 +30,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
             android:text="관심 기자"
             android:textStyle="bold"
             android:textColor="#FFFFFF"

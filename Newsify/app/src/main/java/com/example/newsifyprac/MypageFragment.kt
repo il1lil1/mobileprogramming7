@@ -16,8 +16,9 @@ class MypageFragment : Fragment() {
 
     var binding: FragmentMypageBinding?=null
     lateinit var adapter:MypageScrapedAdapter
+    lateinit var adapter2:MypageReporterAdapter
     lateinit var filteredList: ArrayList<NewsData> // Only scraped NewsData List
-
+    lateinit var filteredList2: ArrayList<NewsData>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,8 +30,10 @@ class MypageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         filteredList = ArrayList(data_real.filter { it.scraped })
+        filteredList2 = ArrayList(data_real.filter { it.favorited }.distinctBy { it.reporter })
 
         var scrap_recycler : RecyclerView = view.findViewById(R.id.scrap_article)
+        var reporter_recycler : RecyclerView = view.findViewById(R.id.subscribe_reporter)
 
         adapter = MypageScrapedAdapter(filteredList).apply {
             itemClickListener = object : MypageScrapedAdapter.OnItemClickListener {
@@ -39,10 +42,17 @@ class MypageFragment : Fragment() {
                 }
 
                 override fun OnReporterClick(data: NewsData, position: Int) {
-                    // Do something when reporter is clicked
+                    val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                    fragment.addToBackStack(null)
+                    val reporterFragment = ReporterFragment()
+                    reporterFragment.favorited = data.favorited
+                    reporterFragment.reporterName = data.reporter
+                    reporterFragment.broadcasterName = data.broadcaster
+                    fragment.replace(R.id.frameLayout, reporterFragment)
+                    fragment.commit()
                 }
 
-                override fun OnScrapClick(data: NewsData, position: Int) { // 추가
+                override fun OnScrapClick(data: NewsData, position: Int) {
                     data.scraped = false
                     filteredList.removeAt(position)
                     notifyItemRemoved(position)
@@ -53,6 +63,37 @@ class MypageFragment : Fragment() {
         scrap_recycler.layoutManager = LinearLayoutManager(requireContext())
         scrap_recycler.adapter = adapter
 
+
+        adapter2 = MypageReporterAdapter(filteredList2).apply {
+            itemClickListener = object : MypageReporterAdapter.OnItemClickListener {
+                override fun OnItemClick(data: NewsData, position: Int) {
+                    val reporterName = data.reporter
+                    data_real.forEach { item ->
+                        if (item.reporter == reporterName) {
+                            item.favorited = false
+                        }
+                    }
+                    filteredList2.removeAt(position)
+                    notifyItemRemoved(position)
+                }
+
+
+
+                override fun OnReporterClick(data: NewsData, position: Int) {
+                    val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                    fragment.addToBackStack(null)
+                    val reporterFragment = ReporterFragment()
+                    reporterFragment.favorited = data.favorited
+                    reporterFragment.reporterName = data.reporter
+                    reporterFragment.broadcasterName = data.broadcaster
+                    fragment.replace(R.id.frameLayout, reporterFragment)
+                    fragment.commit()
+                }
+            }
+        }
+
+        reporter_recycler.layoutManager = LinearLayoutManager(requireContext())
+        reporter_recycler.adapter = adapter2
 
     }
 

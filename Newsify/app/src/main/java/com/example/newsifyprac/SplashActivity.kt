@@ -39,7 +39,7 @@ class SplashActivity : AppCompatActivity() {
                             val intent = Intent(this@SplashActivity, MainActivity::class.java)
                             startActivity(intent)
                             finish()
-                        }, 1000) // 2000 ms = 2 seconds
+                        }, 1000)
                     }
 
                     override fun onAnimationStart(animation: Animation?) {

@@ -53,7 +53,6 @@ class SearchResultFragment : Fragment() {
 
             override fun OnReporterClick(data: NewsData, position: Int) {
                 val fragment = requireActivity().supportFragmentManager.beginTransaction()
-                fragment.addToBackStack(null)
                 val reporterFragment = ReporterFragment()
                 reporterFragment.reporterName = data.reporter
                 reporterFragment.broadcasterName = data.broadcaster

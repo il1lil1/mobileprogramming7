@@ -59,23 +59,6 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
             holder.binding.newsMemo.visibility = View.INVISIBLE
         }
 
-//        if(values[position].broadcasterSelect){
-//            holder.binding.newslayout.visibility = View.VISIBLE
-//        }else{
-//            holder.binding.newslayout.visibility = View.GONE
-//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
-//            layoutParams.height = 0
-//            holder.binding.newslayout.layoutParams = layoutParams
-//        }
-//
-//        if(values[position].categorySelect){
-//            holder.binding.newslayout.visibility = View.VISIBLE
-//        }else{
-//            holder.binding.newslayout.visibility = View.GONE
-//            val layoutParams = holder.binding.newslayout.layoutParams as RecyclerView.LayoutParams
-//            layoutParams.height = 0
-//            holder.binding.newslayout.layoutParams = layoutParams
-//        }
 
         if(values[position].reporterSelect) {
             holder.binding.newslayout.visibility = View.VISIBLE
