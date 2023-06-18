@@ -14,6 +14,8 @@ import org.jsoup.Jsoup
 import org.jsoup.parser.Parser
 
 class NewsContentFragment : Fragment() {
+    private lateinit var myViewModel: MyViewModel
+
     var contentData:NewsData? = null
     val scope = CoroutineScope(Dispatchers.IO)
 
@@ -27,6 +29,10 @@ class NewsContentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val mainActivity = requireActivity() as MainActivity
+        myViewModel = mainActivity.myViewModel
+
+
         var contentTitle: TextView = view.findViewById(R.id.contentTitle)
         var contentDate: TextView = view.findViewById(R.id.contentDate)
         var contentReporter: TextView = view.findViewById(R.id.contentReporter)
@@ -35,6 +41,8 @@ class NewsContentFragment : Fragment() {
         contentTitle.text = contentData?.title
         contentDate.text = contentData?.date
         contentReporter.text = contentData?.reporter
+
+        contentContent.textSize = myViewModel.TextSize.toFloat()
 
         when {
             contentData?.broadcaster == "조선일보" -> {

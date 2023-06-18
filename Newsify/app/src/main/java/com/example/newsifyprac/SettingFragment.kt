@@ -47,6 +47,9 @@ class SettingFragment : Fragment() {
         spinadapter.add("10")
         spinadapter.add("12")
         spinadapter.add("14")
+        spinadapter.add("16")
+        spinadapter.add("18")
+        spinadapter.add("20")
 
         myspinview.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

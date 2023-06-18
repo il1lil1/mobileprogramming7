@@ -52,6 +52,7 @@ class NewsFragment : Fragment() {
             override fun OnReporterClick(data: NewsData, position: Int) {
                 val fragment = requireActivity().supportFragmentManager.beginTransaction()
                 val reporterFragment = ReporterFragment()
+                fragment.addToBackStack(null)
                 reporterFragment.favorited = data.favorited
                 reporterFragment.reporterName = data.reporter
                 reporterFragment.broadcasterName = data.broadcaster
@@ -62,6 +63,7 @@ class NewsFragment : Fragment() {
             override fun OnTittleClick(data: NewsData, position: Int) {
                 val fragment = requireActivity().supportFragmentManager.beginTransaction()
                 val contentFragment = NewsContentFragment()
+                fragment.addToBackStack(null)
                 contentFragment.contentData = data
                 fragment.replace(R.id.frameLayout, contentFragment)
                 fragment.commit()
