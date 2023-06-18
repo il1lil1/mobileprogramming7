@@ -5,13 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".NewsContentFragment">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/contentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/search_border"
+        android:background="@drawable/textview_style2"
         android:gravity="center"
         android:padding="5dp"
         android:text="TextView"
@@ -21,22 +28,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/textview_style2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="날짜 : "
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/contentDate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:padding="5dp"
             android:text="TextView"
             android:textStyle="bold" />
 
+
+
         <TextView
             android:id="@+id/contentReporter"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:padding="5dp"
             android:text="TextView"
             android:textStyle="bold" />

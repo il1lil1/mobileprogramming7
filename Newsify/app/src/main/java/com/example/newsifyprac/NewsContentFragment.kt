@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -45,7 +46,13 @@ class NewsContentFragment : Fragment() {
 
         contentContent.textSize = myViewModel.TextSize.toFloat()
 
+        val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
+
         scope.launch {
+            withContext(Dispatchers.Main) {
+                progressBar.visibility = View.VISIBLE // Show loading screen
+            }
+
             when {
                 contentData?.broadcaster == "조선일보" -> {
                     getNewsChosun(contentData?.url, contentContent)
@@ -56,6 +63,10 @@ class NewsContentFragment : Fragment() {
                 contentData?.broadcaster == "JTBC" -> {
                     getNewsJtbc(contentData?.url, contentContent)
                 }
+            }
+
+            withContext(Dispatchers.Main) {
+                progressBar.visibility = View.GONE // Hide loading screen
             }
         }
     }
