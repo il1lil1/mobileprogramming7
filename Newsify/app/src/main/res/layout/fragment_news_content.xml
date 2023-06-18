@@ -23,6 +23,7 @@
         android:padding="5dp"
         android:text="TextView"
         android:textSize="20dp"
+        android:textColor="#000000"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -37,6 +38,7 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:text="날짜 : "
+            android:textColor="#000000"
             android:textStyle="bold" />
 
         <TextView
@@ -46,9 +48,8 @@
             android:layout_weight="2"
             android:padding="5dp"
             android:text="TextView"
+            android:textColor="#000000"
             android:textStyle="bold" />
-
-
 
         <TextView
             android:id="@+id/contentReporter"
@@ -57,6 +58,7 @@
             android:layout_weight="2"
             android:padding="5dp"
             android:text="TextView"
+            android:textColor="#000000"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -70,7 +72,11 @@
         android:id="@+id/contentContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="TextView" />
+        android:text="로딩중"
+        android:padding="20dp"
+        android:textColor="#000000"
+        android:background="@drawable/textview_style2"
+        />
 
     </ScrollView>
 
