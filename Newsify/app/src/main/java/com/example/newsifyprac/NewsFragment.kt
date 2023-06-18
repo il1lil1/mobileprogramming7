@@ -9,22 +9,26 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.SearchView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.newsifyprac.databinding.FragmentNewsBinding
+import com.example.newsifyprac.databinding.FragmentSearchBinding
 import com.example.newsifyprac.databinding.FragmentSettingBinding
 
 class NewsFragment : Fragment() {
 
-    var binding: FragmentSettingBinding?=null
+    var binding: FragmentNewsBinding?=null
     lateinit var adapter:NewsRecyclerViewAdapter
-
+    val model:MyViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false)
+        binding = FragmentNewsBinding.inflate(layoutInflater,container,false)
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,14 +37,8 @@ class NewsFragment : Fragment() {
 
         var myrecyView : RecyclerView = view.findViewById(R.id.recyclerView)
 
-        var searchbtn : ImageView = view.findViewById(R.id.search_button)
-        searchbtn.setOnClickListener {
-            val fragment = requireActivity().supportFragmentManager.beginTransaction()
-            fragment.addToBackStack(null)
-            val searchFragment = SearchFragment()
-            fragment.replace(R.id.frameLayout, searchFragment)
-            fragment.commit()
-        }
+
+
 
         adapter = NewsRecyclerViewAdapter(data_real)
         adapter.itemClickListener = object :NewsRecyclerViewAdapter.OnItemClickListener{
@@ -70,6 +68,28 @@ class NewsFragment : Fragment() {
             }
         }
 
+
+        val searchView = binding!!.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val searchterm = binding!!.searchView.query.toString()
+                model.setLiveData(searchterm)
+                val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                fragment.addToBackStack(null)
+                val searchresultFragment = SearchResultFragment()
+                fragment.replace(R.id.frameLayout, searchresultFragment)
+                fragment.commit()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { query ->
+
+                }
+                return true
+            }
+        })
         myrecyView.layoutManager = LinearLayoutManager(requireContext())
         myrecyView.adapter = adapter
 
