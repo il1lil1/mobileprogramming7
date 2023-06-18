@@ -10,6 +10,7 @@ import android.widget.TextView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.jsoup.Jsoup
 import org.jsoup.parser.Parser
 
@@ -44,25 +45,24 @@ class NewsContentFragment : Fragment() {
 
         contentContent.textSize = myViewModel.TextSize.toFloat()
 
-        when {
-            contentData?.broadcaster == "조선일보" -> {
-                getNewsChosun(contentData?.url, contentContent)
-            }
-            contentData?.broadcaster == "SBS" -> {
-                getNewsSbs(contentData?.url, contentContent)
-            }
-            contentData?.broadcaster == "JTBC" -> {
-                getNewsJtbc(contentData?.url, contentContent)
+        scope.launch {
+            when {
+                contentData?.broadcaster == "조선일보" -> {
+                    getNewsChosun(contentData?.url, contentContent)
+                }
+                contentData?.broadcaster == "SBS" -> {
+                    getNewsSbs(contentData?.url, contentContent)
+                }
+                contentData?.broadcaster == "JTBC" -> {
+                    getNewsJtbc(contentData?.url, contentContent)
+                }
             }
         }
     }
 
-    fun getNewsChosun(url:String?, contentContent:TextView) {
-        var str:String? = null
-        scope.launch {
-
+    suspend fun getNewsChosun(url: String?, contentContent: TextView) {
+        val str = withContext(Dispatchers.IO) {
             val docUrl = Jsoup.connect(url).get()
-
             var content = docUrl.select("script#fusion-metadata").toString()
 
             var indexNum = 0
@@ -92,54 +92,38 @@ class NewsContentFragment : Fragment() {
                 printStr += "\n\n"
             }
 
-            str = printStr
+            printStr
         }
 
-        while (true) {
-            if (str != null) {
-                contentContent.text = str
-                break
-            }
+        withContext(Dispatchers.Main) {
+            contentContent.text = str
         }
     }
 
-    fun getNewsSbs(url:String?, contentContent:TextView) {
-        var str:String? = null
-        scope.launch {
 
+    suspend fun getNewsSbs(url: String?, contentContent: TextView) {
+        val str = withContext(Dispatchers.IO) {
             val docUrl = Jsoup.connect(url).parser(Parser.htmlParser()).get()
-
             val content = docUrl.select(".text_area")
 
-            str = content.text().replace(". ", ".\n\n")
-
+            content.text().replace(". ", ".\n\n")
         }
 
-        while (true) {
-            if (str != null) {
-                contentContent.text = str
-                break
-            }
+        withContext(Dispatchers.Main) {
+            contentContent.text = str
         }
     }
 
-    fun getNewsJtbc(url:String?, contentContent:TextView) {
-        var str:String? = null
-        scope.launch {
-
+    suspend fun getNewsJtbc(url: String?, contentContent: TextView) {
+        val str = withContext(Dispatchers.IO) {
             val docUrl = Jsoup.connect(url).parser(Parser.htmlParser()).get()
-
             val content = docUrl.select(".article_content")[0]
 
-            str = content.text().replace(". ", ".\n\n")
-
+            content.text().replace(". ", ".\n\n")
         }
 
-        while (true) {
-            if (str != null) {
-                contentContent.text = str
-                break
-            }
+        withContext(Dispatchers.Main) {
+            contentContent.text = str
         }
     }
 }
