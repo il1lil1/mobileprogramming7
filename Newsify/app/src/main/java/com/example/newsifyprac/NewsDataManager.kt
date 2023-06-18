@@ -122,7 +122,6 @@ class NewsDataManager {
 
                     var dateSplit = news.select("pubDate").text().split(" ")
                     var date = dateSplit[3] + "." + dateMap[dateSplit[2]] + "." + dateSplit[1]
-                    Log.i("DATE-SBS", date)
 
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter, date,
@@ -152,8 +151,6 @@ class NewsDataManager {
                     val docUrl = Jsoup.connect(urlToselect).get()
                     val reporter = docUrl.select("#Head1>[name=Author]")
 
-                    Log.i("DATE-Jtbc", news.select("pubDate").text())
-
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter.attr("content").toString() + " 기자", news.select("pubDate").text(),
                         jtbcCategory[rssurlJtbc].toString(), "JTBC"))
@@ -182,8 +179,6 @@ class NewsDataManager {
 
                     var dateSplit = news.select("pubDate").text().split(" ")
                     var date = dateSplit[3] + "." + dateMap[dateSplit[2]] + "." + dateSplit[1]
-
-                    Log.i("DATE-Chosun", date)
 
                     newsList.add(NewsData(news.select("title").text(), urlToselect,
                         reporter, date,

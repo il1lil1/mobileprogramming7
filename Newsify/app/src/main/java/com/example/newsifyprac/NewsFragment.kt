@@ -58,6 +58,14 @@ class NewsFragment : Fragment() {
                 fragment.replace(R.id.frameLayout, reporterFragment)
                 fragment.commit()
             }
+
+            override fun OnTittleClick(data: NewsData, position: Int) {
+                val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                val contentFragment = NewsContentFragment()
+                contentFragment.contentData = data
+                fragment.replace(R.id.frameLayout, contentFragment)
+                fragment.commit()
+            }
         }
 
         myrecyView.layoutManager = LinearLayoutManager(requireContext())
