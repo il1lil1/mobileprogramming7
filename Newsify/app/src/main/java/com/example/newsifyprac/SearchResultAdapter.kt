@@ -14,6 +14,8 @@ class SearchResultAdapter(private val items: ArrayList<NewsData>): RecyclerView.
     interface OnItemClickListener{
         fun OnItemClick(data: NewsData,position: Int)
         fun OnReporterClick(data: NewsData, position: Int)
+
+        fun OnTittleClick(data: NewsData, position: Int)
     }
     var itemClickListener:OnItemClickListener?=null
 
@@ -27,9 +29,9 @@ class SearchResultAdapter(private val items: ArrayList<NewsData>): RecyclerView.
                 itemClickListener?.OnReporterClick(items[adapterPosition],adapterPosition)
             }
 
-            /*binding.searchResultTitle.setOnClickListener {
-                itemClickListener?.OnItemClick(items[adapterPosition].toString(), adapterPosition)
-            }*/
+            binding.newsTittle.setOnClickListener {
+                itemClickListener?.OnTittleClick(items[adapterPosition],adapterPosition)
+            }
         }
         val contentView: TextView = binding.newsTittle
 

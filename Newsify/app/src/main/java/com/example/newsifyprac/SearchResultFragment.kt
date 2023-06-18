@@ -59,6 +59,15 @@ class SearchResultFragment : Fragment() {
                 fragment.replace(R.id.frameLayout, reporterFragment)
                 fragment.commit()
             }
+
+                override fun OnTittleClick(data: NewsData, position: Int) {
+                    val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                    val contentFragment = NewsContentFragment()
+
+                    contentFragment.contentData = data
+                    fragment.replace(R.id.frameLayout, contentFragment)
+                    fragment.commit()
+                }
         }
         SearchRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.VERTICAL, false)
