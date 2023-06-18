@@ -71,6 +71,15 @@ class ReporterFragment : Fragment() {
                 data_real[positon].scraped = !data_real[positon].scraped
                 adapter.notifyItemChanged(positon)
             }
+
+            override fun OnTitleClick(data: NewsData, position: Int) {
+                val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                val contentFragment = NewsContentFragment()
+                fragment.addToBackStack(null)
+                contentFragment.contentData = data
+                fragment.replace(R.id.frameLayout, contentFragment)
+                fragment.commit()
+            }
         }
 
 

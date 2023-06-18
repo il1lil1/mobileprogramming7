@@ -13,6 +13,7 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
 
     interface OnItemClickListener{
         fun OnItemClick(data: NewsData,position: Int)
+        fun OnTitleClick(data: NewsData, position: Int)
     }
 
     var itemClickListener:OnItemClickListener?=null
@@ -21,6 +22,9 @@ class ReporterRecyclerViewAdapter(private val values: ArrayList<NewsData>)
         init{
             binding.newsSave.setOnClickListener {
                 itemClickListener?.OnItemClick(values[adapterPosition],adapterPosition)
+            }
+            binding.newsTittle.setOnClickListener {
+                itemClickListener?.OnTitleClick(values[adapterPosition],adapterPosition)
             }
         }
         val contentView: TextView = binding.newsTittle
