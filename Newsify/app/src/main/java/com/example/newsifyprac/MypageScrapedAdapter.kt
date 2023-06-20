@@ -17,6 +17,7 @@ class MypageScrapedAdapter(private val values: ArrayList<NewsData>)
         fun OnItemClick(data: NewsData,position: Int)
         fun OnReporterClick(data: NewsData, position: Int)
         fun OnScrapClick(data: NewsData, position: Int) // 추가
+        fun OnTittleClick(data: NewsData, position: Int) //추가 22
 
     }
 
@@ -33,6 +34,11 @@ class MypageScrapedAdapter(private val values: ArrayList<NewsData>)
                 itemClickListener?.OnReporterClick(values[adapterPosition],adapterPosition)
             }
             binding.newsMemo.setOnClickListener(this)
+
+            binding.newsTittle.setOnClickListener {
+                itemClickListener?.OnTittleClick(values[adapterPosition],adapterPosition)
+            }
+
         }
         val contentView: TextView = binding.newsTittle
 

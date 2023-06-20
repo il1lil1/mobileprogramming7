@@ -57,6 +57,15 @@ class MypageFragment : Fragment() {
                     filteredList.removeAt(position)
                     notifyItemRemoved(position)
                 }
+
+                override fun OnTittleClick(data: NewsData, position: Int) {
+                    val fragment = requireActivity().supportFragmentManager.beginTransaction()
+                    val contentFragment = NewsContentFragment()
+//                fragment.addToBackStack(null)
+                    contentFragment.contentData = data
+                    fragment.replace(R.id.frameLayout, contentFragment)
+                    fragment.commit()
+                }
             }
         }
 
