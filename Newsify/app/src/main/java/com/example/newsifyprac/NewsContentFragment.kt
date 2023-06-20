@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import kotlinx.coroutines.CoroutineScope
@@ -39,12 +40,41 @@ class NewsContentFragment : Fragment() {
         var contentDate: TextView = view.findViewById(R.id.contentDate)
         var contentReporter: TextView = view.findViewById(R.id.contentReporter)
         var contentContent: TextView = view.findViewById(R.id.contentContent)
+        var contentSave: ImageView = view.findViewById(R.id.news_save)
 
         contentTitle.text = contentData?.title
         contentDate.text = contentData?.date
         contentReporter.text = contentData?.reporter
 
         contentContent.textSize = myViewModel.TextSize.toFloat()
+
+        contentReporter.setOnClickListener {
+            val fragment = requireActivity().supportFragmentManager.beginTransaction()
+            val reporterFragment = ReporterFragment()
+            fragment.addToBackStack(null)
+            reporterFragment.favorited = contentData?.favorited
+            reporterFragment.reporterName = contentData?.reporter
+            reporterFragment.broadcasterName = contentData?.broadcaster
+            fragment.replace(R.id.frameLayout, reporterFragment)
+            fragment.commit()
+        }
+
+        if(contentData?.scraped == true){
+            contentSave.setImageResource(R.drawable.after_save)
+        }
+        else{
+            contentSave.setImageResource(R.drawable.before_save)
+        }
+
+        contentSave.setOnClickListener {
+            contentData?.scraped = !contentData!!.scraped
+            if(contentData?.scraped == true){
+                contentSave.setImageResource(R.drawable.after_save)
+            }
+            else{
+                contentSave.setImageResource(R.drawable.before_save)
+            }
+        }
 
         val progressBar: ProgressBar = view.findViewById(R.id.progressBar)
 
